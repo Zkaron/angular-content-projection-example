@@ -1,0 +1,10 @@
+<div class="popover" appPopover #popover=app-popover>
+    <div class="popover__header">
+        <ng-content></ng-content>
+    </div>
+    <div class="popover__options"
+        [style.display]="popover.expanded ? 'flex' : 'none'"
+        [appPopoverExpansion]="[popover.positionCoordX, popover.positionCoordY]">
+        <ng-content select="app-popover-option"></ng-content>
+    </div>
+</div>

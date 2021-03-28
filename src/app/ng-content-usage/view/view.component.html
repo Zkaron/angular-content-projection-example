@@ -1,0 +1,73 @@
+<cdk-virtual-scroll-viewport [itemSize]="50" style="height: 200px; width: 400px" class="scroller">
+    <div class="wrapper">
+      <div class="grid-container">
+        <span class="grid-item">Titulo 1</span>
+        <span class="grid-item">Titulo 2</span>
+        <span class="grid-item">Titulo 3</span>
+        <span class="grid-item">Titulo 4</span>
+        <span class="grid-item">Titulo 5</span>
+      </div>
+      <ul>
+        <li class="parent">Parent
+          <div class="wrapper">
+            <ul>
+              <li *ngFor="let item of items">
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li *ngFor="let item of items">
+          <div class="grid-container">
+            <span class="grid-item">{{item}}</span>
+            <span class="grid-item">{{item}}</span>
+            <span class="grid-item">{{item}}</span>
+            <span class="grid-item">{{item}}</span>
+            <span class="grid-item">{{item}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </cdk-virtual-scroll-viewport>
+    
+    <app-selection-list>
+      <app-selection-all>
+        <span>Todo</span>
+        <app-popover-option>Eliminar seleccionados<i class="fas fa-trash-alt"></i></app-popover-option>                            
+      </app-selection-all>
+      
+      <app-selection-list-header>
+        <div class="grid-container-header">
+          <span class="grid-item">Agricultor</span>
+          <span class="grid-item">Predio</span>
+          <span class="grid-item">Estado</span>
+          <span class="grid-item">Municipio</span>
+          <span class="grid-item">Cultivo</span>
+        </div>
+      </app-selection-list-header>
+    
+      <app-selection-list-content>
+          <mat-selection-list #listItems class="lands__content-list scroller">
+              <cdk-virtual-scroll-viewport [itemSize]="20" class="lands__content-list scroller">
+                 <mat-list-option class="list-option" checkboxPosition="before" [value]="item" *cdkVirtualFor="let item of items">
+                        <div class="grid-container">
+                          <span class="grid-item">{{ item | titlecase }}</span>
+                          <span class="grid-item">{{ item | titlecase }}</span>
+                          <span class="grid-item">{{ item | titlecase }}</span>
+                          <span class="grid-item">{{ item | titlecase }}</span>
+                          <span class="grid-item">{{ item | titlecase}}</span>
+    
+                          <div class="grid-item">
+                            <app-popover class="selection-list-option__actions">
+                              <i class="fa fa-ellipsis-h"></i>
+                            <app-popover-option>Localizar<i class="fas fa-search-plus"></i></app-popover-option>
+                            <app-popover-option>Validar<i class="fas fa-eye"></i></app-popover-option>
+                            <app-popover-option>Eliminar<i class="fas fa-trash-alt"></i></app-popover-option>
+                            </app-popover>
+                          </div>
+                        </div>
+                  </mat-list-option>
+              </cdk-virtual-scroll-viewport>
+          </mat-selection-list>
+      </app-selection-list-content>
+    </app-selection-list>

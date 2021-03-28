@@ -1,0 +1,28 @@
+:host ::ng-deep {
+    .popover {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+
+.selection-list-option {
+    display: flex;
+    width: 100%;
+}
+
+@media(max-width: 480px) {
+    :host ::ng-deep {
+        & p {
+            margin: 0.2rem;
+            font-weight: normal;
+        }
+    }
+
+    .selection-list-option {
+
+        &__content {
+            flex-direction: column;
+        }
+    }
+}

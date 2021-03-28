@@ -1,0 +1,10 @@
+<div class="app-tooltip" appTooltip #tooltip=app-tooltip>
+    <div class="app-tooltip__header">
+        <ng-content></ng-content>
+    </div>
+    <div class="app-tooltip__options"
+        [style.display]="tooltip.expanded ? 'flex' : 'none'"
+        [appTooltipExpansion]="[tooltip.positionCoordX, tooltip.positionCoordY]">
+        <ng-content select="app-tooltip-option"></ng-content>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+:host ::ng-deep {
+    .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+        // min-height: 48px;
+        height: auto;
+    }
+}
