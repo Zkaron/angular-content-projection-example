@@ -1,0 +1,14 @@
+<div class="app-item">
+    <ng-content></ng-content>
+    <!-- <i *appTooltip="true" [appTooltipPosition]="[50, 50]">Icon</i> -->
+    <!-- <ng-container *appTooltip="true">
+        <app-tooltip-option>Si</app-tooltip-option>
+        <app-tooltip-option>No</app-tooltip-option>
+    </ng-container> -->
+    <app-tooltip position="left">
+        <!-- <i class="fa fa-ellipsis-h"></i> -->
+        <span>Tooltip</span>
+        <app-tooltip-option>Ver<i class="fa fa-eye"></i></app-tooltip-option>
+        <app-tooltip-option>Editar<i class="fa fa-edit"></i></app-tooltip-option>
+    </app-tooltip>
+</div>

@@ -1,0 +1,23 @@
+.popover-item-list {
+    width: 250px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background: #fff;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.popover-item-list > li {
+  list-style-type: none;
+  border-bottom: solid 1px #8b8b8b;
+  padding: 8px 0;
+
+  &:hover {
+    background-color: rosybrown;
+  }
+}
+
+.popover-item-list > li:last-child {
+  border-bottom: none;
+}

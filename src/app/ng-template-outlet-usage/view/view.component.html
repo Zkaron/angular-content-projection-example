@@ -1,0 +1,36 @@
+
+
+<cdk-virtual-scroll-viewport [itemSize]="50" style="height: 300px; width: 80%" class="scroller">
+    <app-selection-list>
+        <ng-template [appSelectionListHeader]>
+            <app-selection-list-header #header [appSelectionListHeaderElement]="header"
+            [items]="headers" [popoverOptions]="headerOptions"
+            (selectionChange)="toggleSelectionAll($event)"
+            (popoverOptionSelected)="changePopoverSelection($event)">
+                <!-- <ng-template [appSelectionListItem] let-todo>
+                    <label>{{ todo }}</label>
+                    <button> Select all </button>
+                </ng-template> -->
+            </app-selection-list-header>
+        </ng-template>
+        <ng-template [appSelectionListContent] let-shoe>
+            <app-selection-list-content #content [appSelectionListContentElement]="content"
+            [items]="shoes" [popoverOptions]="contentOptions" #contentList
+            (selectionChange)="toggleSelectionAll($event)"
+            (popoverOptionSelected)="changePopoverSelection($event)">
+                <ng-template [appSelectionListHeading]>
+                    <span>Shoe type</span>
+                    <span>Price</span>
+                    <span>Size</span>
+                    <span>In stock</span>
+                </ng-template>
+                <ng-template [appSelectionListItem] let-item>
+                    <label>{{ item.type }}</label>
+                    <label>${{ item.price }}</label>
+                    <label>MX {{ item.size }}</label>
+                    <label>{{ item.stock }} units</label>
+                </ng-template>
+            </app-selection-list-content>
+        </ng-template>
+    </app-selection-list>
+</cdk-virtual-scroll-viewport>

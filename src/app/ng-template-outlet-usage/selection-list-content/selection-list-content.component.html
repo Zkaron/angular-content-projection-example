@@ -1,0 +1,24 @@
+<div class="selection-list-content">
+    <div class="selection-list-content__column-headers">
+        <ng-container [ngTemplateOutlet]="headingTemplateRef?.templateRef">
+        </ng-container>
+        <ng-container *ngIf="headingTemplateRef?.templateRef">
+            <span></span> <!-- append an Empty heading to align with popover options -->
+        </ng-container>
+        
+    </div>
+
+    <mat-selection-list (selectionChange)="changeSelection($event)">
+        <mat-list-option checkboxPosition="before" *ngFor="let item of items; let i = index"> 
+            <ng-template #defaultTemplate let-item>
+                <span>{{ item }}</span>
+            </ng-template>
+   
+            <ng-container [ngTemplateOutlet]="itemsTemplateRef?.templateRef || defaultTemplate"
+                [ngTemplateOutletContext]="{ $implicit: item, index: i }">
+            </ng-container>
+
+            <app-popover [popoverOptions]="popoverOptions" (itemSelected)="selectedItem($event)"></app-popover>
+        </mat-list-option>
+    </mat-selection-list>
+</div>

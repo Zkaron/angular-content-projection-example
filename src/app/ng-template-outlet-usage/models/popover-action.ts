@@ -1,0 +1,1 @@
+export type PopoverAction = 'view' | 'edit' | 'delete' | 'restore';

@@ -1,0 +1,13 @@
+<mat-selection-list class="selection-list-all" (selectionChange)="toggleSelectionAll($event)">
+    <mat-list-option checkboxPosition="before">
+      <app-selection-list-option>
+        <div class="selection-list-all__content">
+          <ng-content></ng-content>
+        </div>
+        <app-popover class="selection-list-all__actions" [ngClass]="{ 'selection-list-all__actions-active': displayPopover }">
+          <i class="fa fa-ellipsis-h"></i>
+          <ng-content select="app-popover-option" ngProjectAs="app-popover-option"></ng-content>
+        </app-popover>
+      </app-selection-list-option>
+    </mat-list-option>
+</mat-selection-list>

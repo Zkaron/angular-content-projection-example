@@ -1,0 +1,23 @@
+.selection-list-all {
+    margin-right: 48px;
+
+    &__content {
+        font-weight: bold;
+    }
+
+    &__actions {
+        display: flex;
+        flex-basis: 85%;
+        justify-content: flex-end;
+        // opacity: 0;
+        // visibility: hidden;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 500ms, visibility 500ms;
+
+        &-active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

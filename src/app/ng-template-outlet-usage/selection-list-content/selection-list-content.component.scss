@@ -1,0 +1,29 @@
+:host ::ng-deep {
+    .mat-list-text {
+        text-align: center;
+        display: grid !important;
+        // grid-auto-flow: column;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        row-gap: 10px;
+        column-gap: 1rem;
+        // grid-template-rows: repeat(auto-fill, 120px);
+        align-items: center;
+        // display: flex;
+        // flex-direction: row !important;
+        // justify-content: space-between;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.selection-list-content {
+    &__column-headers {
+        font-weight: bold;
+        text-align: center;
+        margin-left: 48px;
+        margin-right: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+}
