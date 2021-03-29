@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SelectionListHeaderComponent } from './selection-list-header.component';
 
 describe('SelectionListHeaderComponent', () => {
-  let component: SelectionListHeaderComponent;
-  let fixture: ComponentFixture<SelectionListHeaderComponent>;
+  let component: SelectionListHeaderComponent<any>;
+  let fixture: ComponentFixture<SelectionListHeaderComponent<any>>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       declarations: [ SelectionListHeaderComponent ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SelectionListHeaderComponent);

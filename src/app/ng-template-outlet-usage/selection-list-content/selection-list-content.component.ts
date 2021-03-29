@@ -1,9 +1,8 @@
-import { Component, ContentChild, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { PopoverItem } from '../models/popover-item';
-import { PopoverItemComponent } from '../popover-item/popover-item.component';
-import { SelectionListHeadingDirective } from '../selection-list-heading.directive';
-import { SelectionListItemDirective } from '../selection-list-item.directive';
+import { SelectionListHeadingDirective } from '../directives/selection-list-heading.directive';
+import { SelectionListItemDirective } from '../directives/selection-list-item.directive';
 
 @Component({
   selector: 'app-selection-list-content',
