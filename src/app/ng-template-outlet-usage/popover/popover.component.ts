@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
 import { PopoverItem } from '../models/popover-item';
 import { PopoverItemDirective } from '../directives/popover-item.directive';
 
@@ -7,8 +7,9 @@ import { PopoverItemDirective } from '../directives/popover-item.directive';
   templateUrl: './popover.component.html',
   styleUrls: ['./popover.component.scss']
 })
-export class PopoverComponent<T> implements OnInit, AfterContentInit {
+export class PopoverComponent<T> implements OnInit {
   @ContentChild(PopoverItemDirective) popoverItemRef: PopoverItemDirective<T>;
+  @Input() templateRef?: TemplateRef<any>;
   @Input() popoverOptions: PopoverItem<T>[];
   @Output() itemSelected = new EventEmitter<PopoverItem<T>>();
   isOpen = false;
@@ -16,10 +17,6 @@ export class PopoverComponent<T> implements OnInit, AfterContentInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  ngAfterContentInit(): void {
-    console.log('popi', this.popoverItemRef);
   }
 
   selectedItem(event: PopoverItem<T>): void {

@@ -11,6 +11,10 @@
                     <label>{{ todo }}</label>
                     <button> Select all </button>
                 </ng-template> -->
+                <ng-template [appPopoverItem] let-option>
+                    <span>{{ option.item }}</span>
+                    <i class="fa fa-{{ option.icon }}"></i>
+                </ng-template>
             </app-selection-list-header>
         </ng-template>
         <ng-template [appSelectionListContent] let-shoe>
@@ -29,6 +33,10 @@
                     <label>${{ item.price }}</label>
                     <label>MX {{ item.size }}</label>
                     <label>{{ item.stock }} units</label>
+                </ng-template>
+                <ng-template [appPopoverItem] let-option>
+                    <span>{{ option.item }}</span>
+                    <i class="fa fa-{{ option.icon }}"></i>
                 </ng-template>
             </app-selection-list-content>
         </ng-template>

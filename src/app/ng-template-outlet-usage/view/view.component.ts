@@ -13,7 +13,8 @@ export class ViewComponent implements OnInit {
   headerOptions: PopoverItem<string>[] = [
     {
       item: 'Shoe type',
-      action: 'view'
+      action: 'read',
+      icon: 'adjust'
     }
   ];
   // columnHeaders: string[] = ['Shoe type', 'Price', 'Size', '']; // add empty one due to options popover
@@ -33,15 +34,18 @@ export class ViewComponent implements OnInit {
   contentOptions: PopoverItem<string>[] = [
     {
       item: 'View',
-      action: 'view'
+      action: 'read',
+      icon: 'eye'
     },
     {
       item: 'Edit',
-      action: 'view'
+      action: 'modify',
+      icon: 'edit'
     },
     {
       item: 'Delete',
-      action: 'view'
+      action: 'delete',
+      icon: 'trash-alt'
     }
   ];
   constructor() { }
@@ -56,5 +60,4 @@ export class ViewComponent implements OnInit {
   changePopoverSelection(optionSelected: PopoverItem<any>): void {
     console.log('selected this option', optionSelected)
   }
-
 }

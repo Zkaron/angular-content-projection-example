@@ -1,3 +1,14 @@
+:host ::ng-deep {
+    & i {
+        margin-left: 0.5rem;
+    }
+}
+
 .popover-item {
     cursor: pointer;
+    padding: 8px 0;
+
+    &:hover {
+        background-color: rosybrown;
+    }
 }

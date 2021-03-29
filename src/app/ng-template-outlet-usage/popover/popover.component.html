@@ -1,7 +1,10 @@
 <div class="popover">
-  <button (click)="togglePopover($event, ! isOpen)" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  <i class="popover__toggle fa fa-ellipsis-h" 
+  (click)="togglePopover($event, ! isOpen)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  </i>
+  <!-- <button (click)="togglePopover($event, ! isOpen)" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
       {{isOpen ? "Close" : "Open"}}
-    </button>
+  </button> -->
     
     <!-- This template displays the overlay content and is connected to the button -->
     <ng-template
@@ -9,12 +12,12 @@
       [cdkConnectedOverlayOrigin]="trigger"
       [cdkConnectedOverlayOpen]="isOpen"
     >
-      <ul class="popover-item-list">
+      <ul class="popover__item-list">
           <ng-template #defaultTemplate let-option>{{ option }}</ng-template>
   
           <li *ngFor="let option of popoverOptions; let i = index">
-            <app-popover-item [item]="option" (itemSelected)="selectedItem($event)">
-                <ng-container [ngTemplateOutlet]="popoverItemRef?.templateRef || defaultTemplate"
+            <app-popover-item [popoverItem]="option" (itemSelected)="selectedItem($event)">
+                <ng-container [ngTemplateOutlet]="popoverItemRef?.templateRef || templateRef || defaultTemplate"
                     [ngTemplateOutletContext]="{ $implicit: option, index: i }">
                 </ng-container>
             </app-popover-item>

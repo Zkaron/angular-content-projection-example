@@ -9,7 +9,8 @@
             [ngTemplateOutletContext]="{ $implicit: item, index: i }">
             </ng-container>
 
-            <app-popover [popoverOptions]="popoverOptions" (itemSelected)="selectedItem($event)">
+            <app-popover [templateRef]="popoverItemRef?.templateRef" [popoverOptions]="popoverOptions"
+            (itemSelected)="selectedItem($event)">
             </app-popover>
         </mat-list-option>
     </mat-selection-list>

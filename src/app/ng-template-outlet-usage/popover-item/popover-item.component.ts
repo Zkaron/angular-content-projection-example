@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PopoverItemDirective } from '../directives/popover-item.directive';
 import { PopoverItem } from '../models/popover-item';
 
 @Component({
@@ -6,8 +7,9 @@ import { PopoverItem } from '../models/popover-item';
   templateUrl: './popover-item.component.html',
   styleUrls: ['./popover-item.component.scss']
 })
-export class PopoverItemComponent<T> implements OnInit, AfterViewInit {
-  @Input() item: PopoverItem<T>;
+export class PopoverItemComponent<T> implements OnInit {
+  @ContentChild(PopoverItemDirective) popoverItemRef: PopoverItemDirective<T>;
+  @Input() popoverItem: PopoverItem<T>;
   @Output() itemSelected = new EventEmitter<PopoverItem<T>>();
 
   constructor() { }
@@ -16,14 +18,6 @@ export class PopoverItemComponent<T> implements OnInit, AfterViewInit {
   }
 
   selectItem(): void {
-    this.itemSelected.emit(this.item);
+    this.itemSelected.emit(this.popoverItem);
   }
-
-  ngAfterViewInit(): void {
-    // if (! this.item) {
-    //   console.log(this.itemDirective)
-    //   this.item = this.itemDirective.el.nativeElement.innerHtml;
-    // }
-  }
-
 }

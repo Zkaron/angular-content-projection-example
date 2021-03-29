@@ -1,1 +1,1 @@
-export type PopoverAction = 'view' | 'edit' | 'delete' | 'restore';
+export type PopoverAction = 'read' | 'modify' | 'delete' | 'restore';
