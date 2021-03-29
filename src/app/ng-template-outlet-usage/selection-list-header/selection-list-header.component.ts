@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { PopoverItemDirective } from '../directives/popover-item.directive';
 import { SelectionListItemDirective } from '../directives/selection-list-item.directive';
@@ -9,13 +9,13 @@ import { PopoverItem } from '../models/popover-item';
   templateUrl: './selection-list-header.component.html',
   styleUrls: ['./selection-list-header.component.scss']
 })
-export class SelectionListHeaderComponent<T> implements OnInit, AfterViewInit {
+export class SelectionListHeaderComponent<T> implements OnInit {
   @ViewChild(MatSelectionList) selectionList: MatSelectionList;
-  @Input() items: T[];
-  @Input() popoverOptions: PopoverItem<any>[];
-  // @Input() itemsTemplate: TemplateRef<any>;
   @ContentChild(SelectionListItemDirective) itemsTemplateRef?: SelectionListItemDirective;
   @ContentChild(PopoverItemDirective) popoverItemRef?: PopoverItemDirective<any>;
+
+  @Input() items: T[];
+  @Input() popoverOptions: PopoverItem<any>[];
   @Output() selectionChange = new EventEmitter<MatSelectionListChange>();
   @Output() popoverOptionSelected = new EventEmitter<PopoverItem<any>>();
 
@@ -24,11 +24,7 @@ export class SelectionListHeaderComponent<T> implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-  }
-
   selectedItem(item: PopoverItem<any>): void {
-    console.log('header selected', item)
     this.popoverOptionSelected.emit(item);
   }
 

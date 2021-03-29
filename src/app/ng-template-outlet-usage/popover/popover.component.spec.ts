@@ -9,20 +9,7 @@ import { PopoverItem } from '../models/popover-item';
 import { PopoverItemComponent } from '../popover-item/popover-item.component';
 
 import { PopoverComponent } from './popover.component';
-
-@Component({
-  selector: 'app-popover-item',
-  template: `
-    <div><ng-content></ng-content></div>
-  `,
-  providers: [
-    { provide: PopoverItemComponent, useClass: PopoverItemStubComponent }
-  ]
-})
-export class PopoverItemStubComponent {
-  @Output() itemSelected = new EventEmitter<PopoverItem<any>>();
-  constructor() { }
-}
+import { PopoverItemStubComponent } from '../testing/popover-item-stub.component';
 
 @Component({
   selector: 'app-popover-dummy-content-ref',

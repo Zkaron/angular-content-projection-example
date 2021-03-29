@@ -1,11 +1,9 @@
 <div class="selection-list-content">
     <div class="selection-list-content__column-headers">
-        <ng-container [ngTemplateOutlet]="headingTemplateRef?.templateRef">
-        </ng-container>
+        <ng-container [ngTemplateOutlet]="headingTemplateRef?.templateRef"></ng-container>
         <ng-container *ngIf="headingTemplateRef?.templateRef">
-            <span></span> <!-- append an Empty heading to align with popover options -->
+            <span class="selection-list-content__column-headers-offset"></span> <!-- append an Empty heading to align with popover options -->
         </ng-container>
-        
     </div>
 
     <mat-selection-list (selectionChange)="changeSelection($event)">
@@ -20,9 +18,6 @@
 
             <app-popover [templateRef]="popoverItemRef?.templateRef" [popoverOptions]="popoverOptions"
             (itemSelected)="selectedItem($event)">
-                <!-- <ng-container [ngTemplateOutlet]="popoverItemRef?.templateRef || defaultTemplate"
-                [ngTemplateOutletContext]="{ $implicit: popoverOptions, index: i }">
-                </ng-container> -->
             </app-popover>
         </mat-list-option>
     </mat-selection-list>
