@@ -15,15 +15,15 @@ import { SelectionListItemDirective } from './directives/selection-list-item.dir
 import { PopoverItemComponent } from './popover-item/popover-item.component';
 import { SelectionListHeaderDirective } from './directives/selection-list-header.directive';
 import { SelectionListContentDirective } from './directives/selection-list-content.directive';
-import { SelectionListHeaderElementDirective } from './directives/selection-list-header-element.directive';
-import { SelectionListContentElementDirective } from './directives/selection-list-content-element.directive';
+import { SelectionListHeaderInstanceDirective } from './directives/selection-list-header-instance.directive';
+import { SelectionListContentInstanceDirective } from './directives/selection-list-content-instance.directive';
 import { SelectionListHeadingDirective } from './directives/selection-list-heading.directive';
 
 
 @NgModule({
   declarations: [
     ViewComponent, PopoverComponent, SelectionListHeaderComponent, SelectionListComponent, SelectionListContentComponent,
-    PopoverItemDirective, SelectionListItemDirective, PopoverItemComponent, SelectionListHeaderDirective, SelectionListContentDirective, SelectionListHeaderElementDirective, SelectionListContentElementDirective, SelectionListHeadingDirective
+    PopoverItemDirective, SelectionListItemDirective, PopoverItemComponent, SelectionListHeaderDirective, SelectionListContentDirective, SelectionListHeaderInstanceDirective, SelectionListContentInstanceDirective, SelectionListHeadingDirective
   ],
   imports: [
     CommonModule,

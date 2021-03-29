@@ -1,13 +1,13 @@
 import { ElementRef } from '@angular/core';
 import { SelectionListContentComponent } from '../selection-list-content/selection-list-content.component';
-import { SelectionListContentElementDirective } from './selection-list-content-element.directive';
+import { SelectionListContentInstanceDirective } from './selection-list-content-instance.directive';
 
-describe('SelectionListContentElementDirective', () => {
+describe('SelectionListContentInstanceDirective', () => {
   let fakeElementRef: ElementRef;
 
   it('should create an instance', () => {
     fakeElementRef = {} as ElementRef;
-    const directive = new SelectionListContentElementDirective(fakeElementRef);
+    const directive = new SelectionListContentInstanceDirective(fakeElementRef);
     expect(directive).toBeTruthy();
   });
 
@@ -15,9 +15,9 @@ describe('SelectionListContentElementDirective', () => {
     const expectedComponent = {} as SelectionListContentComponent<any>;
     fakeElementRef = {} as ElementRef;
 
-    const directive = new SelectionListContentElementDirective(fakeElementRef);
-    directive.contentElement = expectedComponent;
+    const directive = new SelectionListContentInstanceDirective(fakeElementRef);
+    directive.contentInstance = expectedComponent;
 
-    expect(directive.contentElement).toEqual(expectedComponent);
+    expect(directive.contentInstance).toEqual(expectedComponent);
   });
 });

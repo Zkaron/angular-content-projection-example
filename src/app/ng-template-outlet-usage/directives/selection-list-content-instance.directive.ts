@@ -2,10 +2,10 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { SelectionListContentComponent } from '../selection-list-content/selection-list-content.component';
 
 @Directive({
-  selector: '[appSelectionListContentElement]'
+  selector: '[appSelectionListContentInstance]'
 })
-export class SelectionListContentElementDirective {
-  @Input('appSelectionListContentElement') contentElement: SelectionListContentComponent<any>;
+export class SelectionListContentInstanceDirective {
+  @Input('appSelectionListContentInstance') contentInstance: SelectionListContentComponent<any>;
 
   constructor(public elementRef: ElementRef) { }
 

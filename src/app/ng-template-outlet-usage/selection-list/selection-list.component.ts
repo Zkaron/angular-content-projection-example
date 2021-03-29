@@ -1,9 +1,12 @@
-import { AfterContentInit, Component, ContentChild, ContentChildren, EventEmitter, OnInit, Output, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ContentChildren, EventEmitter, OnDestroy, OnInit, Output, QueryList } from '@angular/core';
+
 import { MatSelectionListChange } from '@angular/material/list';
+import { SubSink } from 'subsink';
+
 import { PopoverItem } from '../models/popover-item';
-import { SelectionListContentElementDirective } from '../directives/selection-list-content-element.directive';
+import { SelectionListContentInstanceDirective } from '../directives/selection-list-content-instance.directive';
 import { SelectionListContentDirective } from '../directives/selection-list-content.directive';
-import { SelectionListHeaderElementDirective } from '../directives/selection-list-header-element.directive';
+import { SelectionListHeaderInstanceDirective } from '../directives/selection-list-header-instance.directive';
 import { SelectionListHeaderDirective } from '../directives/selection-list-header.directive';
 import { SelectionListContentComponent } from '../selection-list-content/selection-list-content.component';
 import { SelectionListHeaderComponent } from '../selection-list-header/selection-list-header.component';
@@ -13,14 +16,13 @@ import { SelectionListHeaderComponent } from '../selection-list-header/selection
   templateUrl: './selection-list.component.html',
   styleUrls: ['./selection-list.component.scss']
 })
-export class SelectionListComponent implements OnInit, AfterContentInit {
+export class SelectionListComponent implements OnInit, AfterContentInit, OnDestroy {
   @ContentChild(SelectionListHeaderDirective) headerRef?: SelectionListHeaderDirective;
   @ContentChild(SelectionListContentDirective) contentRef?: SelectionListContentDirective;
-  @ContentChildren(SelectionListHeaderElementDirective, { descendants: true }) selectionListHeader: QueryList<SelectionListHeaderElementDirective>;
-  @ContentChildren(SelectionListContentElementDirective, { descendants: true }) selectionListContent: QueryList<SelectionListContentElementDirective>;
+  @ContentChildren(SelectionListHeaderInstanceDirective, { descendants: true }) selectionListHeader: QueryList<SelectionListHeaderInstanceDirective>;
+  @ContentChildren(SelectionListContentInstanceDirective, { descendants: true }) selectionListContent: QueryList<SelectionListContentInstanceDirective>;
 
-  @Output() popoverItemSelected = new EventEmitter<PopoverItem<any>>();
-  @Output() selectionChange = new EventEmitter<MatSelectionListChange>();
+  subscriptions = new SubSink();
 
   constructor() { }
 
@@ -29,11 +31,10 @@ export class SelectionListComponent implements OnInit, AfterContentInit {
 
   // TODO: manage subscriptions, if easy to create memory leaks the way it is now
   ngAfterContentInit(): void {
-    this.selectionListHeader.changes.subscribe(headerChanges => {      
-      console.log('headerChanges', headerChanges)
+    this.subscriptions.sink = this.selectionListHeader.changes.subscribe(headerChanges => {      
       const component = this._getSelectionListHeaderComponent();
       if (!!component) {
-        component.selectionChange.subscribe((change: MatSelectionListChange) => {
+        this.subscriptions.sink = component.selectionChange.subscribe((change: MatSelectionListChange) => {
           const contentComponent = this._getSelectionListContentComponent();
           if (!!contentComponent) {
             if (!! change.options[0].selected) {
@@ -51,7 +52,7 @@ export class SelectionListComponent implements OnInit, AfterContentInit {
     let headerComponent: SelectionListHeaderComponent<any> = null;
 
     this.selectionListHeader.toArray().some(header => {
-      headerComponent = header.headerElement;
+      headerComponent = header.headerInstance;
       return !!headerComponent;
     });
 
@@ -62,19 +63,15 @@ export class SelectionListComponent implements OnInit, AfterContentInit {
     let contentComponent: SelectionListContentComponent<any> = null;
 
     this.selectionListContent.toArray().some(content => {
-      contentComponent = content.contentElement;
+      contentComponent = content.contentInstance;
       return !!contentComponent;
     });
 
     return contentComponent;
   }
 
-  selectPopover(event: PopoverItem<any>): void {
-    console.log('evento', event);
-  }
-
-  changeSelection(event: MatSelectionListChange) {
-    console.log('change', event);
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }

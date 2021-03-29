@@ -3,7 +3,7 @@
 <cdk-virtual-scroll-viewport [itemSize]="50" style="height: 300px; width: 80%" class="scroller">
     <app-selection-list>
         <ng-template [appSelectionListHeader]>
-            <app-selection-list-header #header [appSelectionListHeaderElement]="header"
+            <app-selection-list-header #header [appSelectionListHeaderInstance]="header"
             [items]="headers" [popoverOptions]="headerOptions"
             (selectionChange)="toggleSelectionAll($event)"
             (popoverOptionSelected)="changePopoverSelection($event)">
@@ -18,7 +18,7 @@
             </app-selection-list-header>
         </ng-template>
         <ng-template [appSelectionListContent] let-shoe>
-            <app-selection-list-content #content [appSelectionListContentElement]="content"
+            <app-selection-list-content #content [appSelectionListContentInstance]="content"
             [items]="shoes" [popoverOptions]="contentOptions" #contentList
             (selectionChange)="toggleSelectionAll($event)"
             (popoverOptionSelected)="changePopoverSelection($event)">
