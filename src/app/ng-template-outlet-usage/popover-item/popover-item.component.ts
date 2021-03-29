@@ -8,7 +8,6 @@ import { PopoverItem } from '../models/popover-item';
   styleUrls: ['./popover-item.component.scss']
 })
 export class PopoverItemComponent<T> implements OnInit {
-  @ContentChild(PopoverItemDirective) popoverItemRef: PopoverItemDirective<T>;
   @Input() popoverItem: PopoverItem<T>;
   @Output() itemSelected = new EventEmitter<PopoverItem<T>>();
 

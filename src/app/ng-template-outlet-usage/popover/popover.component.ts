@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { PopoverItem } from '../models/popover-item';
 import { PopoverItemDirective } from '../directives/popover-item.directive';
 
@@ -28,5 +28,4 @@ export class PopoverComponent<T> implements OnInit {
     event.stopPropagation();
     this.isOpen = state;
   }
-
 }
